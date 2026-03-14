@@ -21,6 +21,9 @@ texture = SubResource("CanvasTexture_780bu")
 
 [node name="Grappler" type="Node2D" parent="."]
 script = ExtResource("2_xxkby")
+rest_length = null
+stiffness = null
+damping = null
 
 [node name="ray" type="RayCast2D" parent="Grappler"]
 

@@ -35,6 +35,12 @@ damping = 5.0
 
 [node name="Hero" parent="." instance=ExtResource("2_mv3n8")]
 position = Vector2(618, 465.00003)
+speed = 600
+jump_speed = -1000
+gravity = 3355
+friction = 0.1
+acceleration = 0.25
+grappling = false
 
 [node name="Ground platform" parent="." instance=ExtResource("3_svm70")]
 position = Vector2(559, 581)

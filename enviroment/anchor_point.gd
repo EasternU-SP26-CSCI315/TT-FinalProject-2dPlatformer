@@ -1,15 +1,18 @@
 extends Node2D
 
-@onready var anchor_point: Node2D = $"Static bodies/Anchor point"
-@onready var damped_spring_joint_2d: DampedSpringJoint2D = $DampedSpringJoint2D
-@onready var can_grapple: bool = false
-@onready var player: CharacterBody2D = null
+var can_grapple: bool = false
+@onready var anchor_point: Node2D = $"."
 @onready var point: StaticBody2D = $Point
+var current_anchor: StaticBody2D = null
 
-func _on_area_2d_body_entered(player: CharacterBody2D) -> void:
-	can_grapple = true
+func _on_area_2d_body_entered(body) -> void:
+	if body is CharacterBody2D:
+		body.get_node("Grappler").current_anchor = self
+		body.get_node("Grappler").can_grapple = true
 
 
 
-func _on_area_2d_body_exited(player: CharacterBody2D) -> void:
-	can_grapple = false
+func _on_area_2d_body_exited(body) -> void:
+	if body is CharacterBody2D:
+		body.get_node("Grappler").current_anchor = null
+		body.get_node("Grappler").can_grapple = false
