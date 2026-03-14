@@ -1,15 +1,15 @@
 [gd_scene load_steps=6 format=3 uid="uid://bq2bihdfo0eh"]
 
-[ext_resource type="Script" uid="uid://bbkercovlogdh" path="res://joint_test.gd" id="1_52p0h"]
-[ext_resource type="PackedScene" uid="uid://c7cqo4cem4cb" path="res://hero.tscn" id="2_1dkwx"]
-[ext_resource type="PackedScene" uid="uid://fo3tgqbcxms" path="res://enviroment/ground_platform.tscn" id="2_tiacx"]
+[ext_resource type="Script" uid="uid://bbkercovlogdh" path="res://testing_stuff/joint_test.gd" id="1_bqffe"]
+[ext_resource type="PackedScene" uid="uid://c7cqo4cem4cb" path="res://Characters/hero.tscn" id="2_mv3n8"]
+[ext_resource type="PackedScene" uid="uid://fo3tgqbcxms" path="res://enviroment/ground_platform.tscn" id="3_svm70"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1dkwx"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_tiacx"]
 
 [node name="joint_test" type="Node2D"]
-script = ExtResource("1_52p0h")
+script = ExtResource("1_bqffe")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(563, 272)
@@ -33,8 +33,8 @@ rest_length = 50.0
 stiffness = 64.0
 damping = 5.0
 
-[node name="Hero" parent="." instance=ExtResource("2_1dkwx")]
+[node name="Hero" parent="." instance=ExtResource("2_mv3n8")]
 position = Vector2(618, 465.00003)
 
-[node name="Ground platform" parent="." instance=ExtResource("2_tiacx")]
+[node name="Ground platform" parent="." instance=ExtResource("3_svm70")]
 position = Vector2(559, 581)

@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://fo3tgqbcxms" path="res://enviroment/ground_platform.tscn" id="1_05as6"]
 [ext_resource type="PackedScene" uid="uid://buvpopi8rr8lj" path="res://enviroment/floating_platform.tscn" id="2_5ymk8"]
 [ext_resource type="PackedScene" uid="uid://ba74sol07ih5o" path="res://enviroment/obstacle.tscn" id="3_4mnpp"]
-[ext_resource type="PackedScene" uid="uid://dyfw1fcya6msp" path="res://anchor_point.tscn" id="4_5ymk8"]
-[ext_resource type="PackedScene" uid="uid://c7cqo4cem4cb" path="res://hero.tscn" id="4_ctebd"]
+[ext_resource type="PackedScene" uid="uid://dyfw1fcya6msp" path="res://enviroment/anchor_point.tscn" id="4_5ymk8"]
+[ext_resource type="PackedScene" uid="uid://c7cqo4cem4cb" path="res://Characters/hero.tscn" id="4_ctebd"]
 
 [node name="Main level" type="Node"]
 script = ExtResource("1_4mnpp")

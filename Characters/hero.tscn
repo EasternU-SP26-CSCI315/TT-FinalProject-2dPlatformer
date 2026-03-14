@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c7cqo4cem4cb"]
 
-[ext_resource type="Script" uid="uid://upi2iq1tbdoi" path="res://hero.gd" id="1_780bu"]
+[ext_resource type="Script" uid="uid://upi2iq1tbdoi" path="res://Characters/hero.gd" id="1_780bu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t4edt"]
 
