@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://bq2bihdfo0eh"]
+
+[ext_resource type="Script" uid="uid://bbkercovlogdh" path="res://joint_test.gd" id="1_52p0h"]
+[ext_resource type="PackedScene" uid="uid://c7cqo4cem4cb" path="res://hero.tscn" id="2_1dkwx"]
+[ext_resource type="PackedScene" uid="uid://fo3tgqbcxms" path="res://enviroment/ground_platform.tscn" id="2_tiacx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1dkwx"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_tiacx"]
+
+[node name="joint_test" type="Node2D"]
+script = ExtResource("1_52p0h")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(563, 272)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_1dkwx")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D"]
+modulate = Color(0.2231029, 0.2231029, 0.22310287, 1)
+position = Vector2(4.7683716e-07, 4.7683716e-07)
+scale = Vector2(14.000001, 14.000001)
+texture = SubResource("CanvasTexture_tiacx")
+
+[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
+position = Vector2(563, 272)
+node_a = NodePath("../Hero")
+node_b = NodePath("../StaticBody2D")
+bias = 0.157
+length = 100.0
+rest_length = 50.0
+stiffness = 64.0
+damping = 5.0
+
+[node name="Hero" parent="." instance=ExtResource("2_1dkwx")]
+position = Vector2(618, 465.00003)
+
+[node name="Ground platform" parent="." instance=ExtResource("2_tiacx")]
+position = Vector2(559, 581)

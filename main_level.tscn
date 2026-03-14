@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://dpg0eqrtlu3k4"]
+
+[ext_resource type="Script" uid="uid://yflsn0aeu2ir" path="res://main_level.gd" id="1_4mnpp"]
+[ext_resource type="PackedScene" uid="uid://fo3tgqbcxms" path="res://enviroment/ground_platform.tscn" id="1_05as6"]
+[ext_resource type="PackedScene" uid="uid://buvpopi8rr8lj" path="res://enviroment/floating_platform.tscn" id="2_5ymk8"]
+[ext_resource type="PackedScene" uid="uid://ba74sol07ih5o" path="res://enviroment/obstacle.tscn" id="3_4mnpp"]
+[ext_resource type="PackedScene" uid="uid://dyfw1fcya6msp" path="res://anchor_point.tscn" id="4_5ymk8"]
+[ext_resource type="PackedScene" uid="uid://c7cqo4cem4cb" path="res://hero.tscn" id="4_ctebd"]
+
+[node name="Main level" type="Node"]
+script = ExtResource("1_4mnpp")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(10, 0.5)
+
+[node name="Static bodies" type="Node" parent="."]
+
+[node name="Ground platform" parent="Static bodies" instance=ExtResource("1_05as6")]
+position = Vector2(-78, 295)
+scale = Vector2(50, 3)
+
+[node name="floating platform" parent="Static bodies" instance=ExtResource("2_5ymk8")]
+position = Vector2(-30, 102)
+
+[node name="floating platform2" parent="Static bodies" instance=ExtResource("2_5ymk8")]
+position = Vector2(-285, 161)
+
+[node name="obstacle" parent="Static bodies" instance=ExtResource("3_4mnpp")]
+position = Vector2(173, 185)
+scale = Vector2(4, 8)
+
+[node name="Anchor point" parent="Static bodies" instance=ExtResource("4_5ymk8")]
+position = Vector2(-441, -112)
+
+[node name="Hero" parent="." instance=ExtResource("4_ctebd")]
+position = Vector2(-527, 233.00002)
