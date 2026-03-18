@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dpg0eqrtlu3k4"]
+[gd_scene load_steps=10 format=3 uid="uid://dpg0eqrtlu3k4"]
 
 [ext_resource type="Script" uid="uid://yflsn0aeu2ir" path="res://main_level.gd" id="1_4mnpp"]
 [ext_resource type="PackedScene" uid="uid://fo3tgqbcxms" path="res://enviroment/ground_platform.tscn" id="1_05as6"]
@@ -13,6 +13,9 @@ distance = -1.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ctebd"]
 normal = Vector2(-1, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4mnpp"]
+size = Vector2(780.7999, 20)
 
 [node name="Main level" type="Node"]
 script = ExtResource("1_4mnpp")
@@ -62,27 +65,41 @@ scale = Vector2(2, 3)
 [node name="anchor_points" type="Node2D" parent="Static bodies"]
 
 [node name="Anchor point" parent="Static bodies/anchor_points" instance=ExtResource("4_5ymk8")]
-position = Vector2(654, -260)
+position = Vector2(620, -260)
 scale = Vector2(2, 2)
 
 [node name="Anchor point2" parent="Static bodies/anchor_points" instance=ExtResource("4_5ymk8")]
-position = Vector2(2104, -260)
+position = Vector2(2085, -260)
 scale = Vector2(2, 2)
 
-[node name="Lbound" type="StaticBody2D" parent="Static bodies"]
-position = Vector2(-576, 0)
+[node name="Bounds" type="Node2D" parent="Static bodies"]
+position = Vector2(2085, -260)
 scale = Vector2(2, 2)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Static bodies/Lbound"]
+[node name="Lbound" type="StaticBody2D" parent="Static bodies/Bounds"]
+position = Vector2(-1330.5, 130)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Static bodies/Bounds/Lbound"]
 scale = Vector2(2, 2)
 shape = SubResource("WorldBoundaryShape2D_4mnpp")
 
-[node name="Rbound" type="StaticBody2D" parent="Static bodies"]
-position = Vector2(3329, 0)
-scale = Vector2(2, 3)
+[node name="Rbound" type="StaticBody2D" parent="Static bodies/Bounds"]
+position = Vector2(622, 130)
+scale = Vector2(1, 1.5)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Static bodies/Rbound"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Static bodies/Bounds/Rbound"]
 shape = SubResource("WorldBoundaryShape2D_ctebd")
+
+[node name="Death Plane" type="Node2D" parent="Static bodies"]
+
+[node name="Area2D" type="Area2D" parent="Static bodies/Death Plane"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Static bodies/Death Plane/Area2D"]
+position = Vector2(1365.0001, 652)
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_4mnpp")
 
 [node name="Hero" parent="." instance=ExtResource("4_ctebd")]
 position = Vector2(-527, 233.00002)
+
+[connection signal="body_entered" from="Static bodies/Death Plane/Area2D" to="." method="_on_area_2d_body_entered"]

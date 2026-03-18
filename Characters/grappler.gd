@@ -11,6 +11,7 @@ extends Node2D
 var launched = false
 var target: Vector2
 var can_grapple: bool = false
+var grapple_toggle: bool = true
 @onready var current_anchor: Node2D
 
 func _ready() -> void:
@@ -20,11 +21,16 @@ func _process(delta):
 	if current_anchor != null:
 		ray.look_at(current_anchor.global_position)
 		ray.target_position = ray.to_local(current_anchor.global_position)
+	else:
+		can_grapple = false
 	
 	if Input.is_action_just_pressed("grapple") and can_grapple:
-		launch()
-	if Input.is_action_just_released("grapple") and can_grapple:
-		retract()
+		if grapple_toggle == true:
+			launch()
+			grapple_toggle = false
+		else:
+			retract()
+			grapple_toggle = true
 	if !can_grapple:
 		retract()
 	if launched:

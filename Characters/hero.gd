@@ -5,6 +5,11 @@ extends CharacterBody2D
 @export_range(0.0, 1.0) var friction = 0.1
 @export_range(0.0 , 1.0) var acceleration = 0.25
 @export var grappling = false
+var START_HEALTH = 100
+var health
+
+func _ready() -> void:
+	health = START_HEALTH
 
 	
 func _physics_process(delta):
