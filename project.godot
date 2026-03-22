@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Platforming Project"
-run/main_scene="uid://dpg0eqrtlu3k4"
+run/main_scene="uid://k8weldq3io6r"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+simple_transition_manager="*res://simple_transition_manager.gd"
 
 [input]
 
