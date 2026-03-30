@@ -5,9 +5,9 @@
 [sub_resource type="CanvasTexture" id="CanvasTexture_u8kbh"]
 
 [node name="Door_open" type="Area2D"]
+scale = Vector2(5, 10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(5, 10)
 shape = SubResource("RectangleShape2D_h12g1")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]

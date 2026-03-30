@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://cio4u2fqoccsx"]
+
+[ext_resource type="Script" uid="uid://ba2jfkqvbk0hp" path="res://enviroment/anchor_point.gd" id="1_jj46j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gf2dh"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_k36pn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o34l5"]
+size = Vector2(343, 430)
+
+[node name="Anchor point" type="Node2D"]
+script = ExtResource("1_jj46j")
+
+[node name="Point" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Point"]
+position = Vector2(0, 10)
+shape = SubResource("RectangleShape2D_gf2dh")
+
+[node name="Sprite2D" type="Sprite2D" parent="Point/CollisionShape2D"]
+modulate = Color(0.2231029, 0.2231029, 0.22310287, 1)
+position = Vector2(-5.9604645e-07, -5.9604645e-07)
+scale = Vector2(20, 20)
+texture = SubResource("CanvasTexture_k36pn")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 215)
+shape = SubResource("RectangleShape2D_o34l5")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -4,9 +4,10 @@ extends Node
 @onready var hero: CharacterBody2D = $Hero
 @onready var camera: Camera2D = $Camera
 @onready var grappler: Node2D = $Hero/Grappler
-@onready var health_bar: Control = $"Health Bar"
+@onready var door_open: Area2D = $"Static bodies/Door_open"
 var start_x = -527.0
 var start_y = 234.995
+@onready var door_bool = false
 
 
 func _ready() -> void:
@@ -19,6 +20,7 @@ func _ready() -> void:
 	
 		
 func _physics_process(delta: float) -> void:
+	print(door_bool)
 	camera.position.x = hero.position.x
 	#health_bar.position.x = camera.position.x
 	if !alive():
@@ -38,3 +40,17 @@ func alive() -> bool:
 		return false
 	else:
 		return true
+
+
+func _on_door_open_body_entered(body: Node2D) -> void:
+	if body is CharacterBody2D:
+		door_bool = true
+	if  door_bool:
+		change_lvl()
+		
+
+
+func change_lvl() -> void:
+	await simple_transition_manager.fade_out()
+	get_tree().change_scene_to_file("res://level_1_2.tscn")
+	simple_transition_manager.fade_in()

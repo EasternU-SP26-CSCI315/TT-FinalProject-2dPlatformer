@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfaccqq4lnguy"]
+
+[ext_resource type="PackedScene" uid="uid://fo3tgqbcxms" path="res://enviroment/ground_platform.tscn" id="1_03in3"]
+[ext_resource type="PackedScene" uid="uid://c7cqo4cem4cb" path="res://Characters/hero.tscn" id="2_g5i7g"]
+
+[node name="level 1-2" type="Node"]
+
+[node name="Ground platform" parent="." instance=ExtResource("1_03in3")]
+position = Vector2(-1, 101)
+
+[node name="Camera" type="Camera2D" parent="."]
+scale = Vector2(250, 1.5)
+process_callback = 0
+
+[node name="Hero" parent="." instance=ExtResource("2_g5i7g")]
