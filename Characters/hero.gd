@@ -1,10 +1,11 @@
 extends CharacterBody2D
 @export var speed = 450
+@export var climb_speed = -500
 @export var jump_speed = -1000
 @export var gravity = 3355
 @export_range(0.0, 1.0) var friction = 0.1
 @export_range(0.0 , 1.0) var acceleration = 0.25
-@export var grappling = false
+@onready var grappler: Node2D = $Grappler
 var START_HEALTH = 100
 var health
 
@@ -13,7 +14,11 @@ func _ready() -> void:
 
 	
 func _physics_process(delta):
-	if grappling:
+	if grappler.launched:
+		#var climb_dir = Input.get_axis('climb_up', 'climb_down')
+		#if climb_dir != 0:
+			#velocity.y = lerp(velocity.y, -climb_dir * climb_speed, acceleration)
+		#else:
 		velocity.y += gravity * 0.5 * delta
 	else:
 		velocity.y += gravity * delta

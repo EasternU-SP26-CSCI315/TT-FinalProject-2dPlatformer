@@ -27,9 +27,11 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D:
+		await simple_transition_manager.fade_out()
 		hero.position.x = start_x
 		hero.position.y = start_y
 		hero.health -= 10
+		simple_transition_manager.fade_in()
 		
 func alive() -> bool:
 	if hero.health == 0:

@@ -1,5 +1,5 @@
 extends Node2D
-@export var rest_length = 200.0
+@export var rest_length = 250.0
 @export var stiffness = 15.0
 @export var damping = 1.0
 
@@ -31,8 +31,8 @@ func _process(delta):
 		else:
 			retract()
 			grapple_toggle = true
-	if !can_grapple:
-		retract()
+	#if !can_grapple:
+		#retract()
 	if launched:
 		handle_grapple(delta)
 

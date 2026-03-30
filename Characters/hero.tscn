@@ -26,3 +26,4 @@ script = ExtResource("2_xxkby")
 
 [node name="rope" type="Line2D" parent="Grappler"]
 points = PackedVector2Array(0, 0, 155, -70.333336)
+default_color = Color(0.4857039, 0.4857034, 0.4857036, 1)

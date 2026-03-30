@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ba2jfkqvbk0hp" path="res://enviroment/anchor_point.gd" id="1_k36pn"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_o34l5"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gf2dh"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_k36pn"]
 
@@ -15,12 +15,13 @@ script = ExtResource("1_k36pn")
 [node name="Point" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Point"]
-shape = SubResource("CircleShape2D_o34l5")
+position = Vector2(0, 10)
+shape = SubResource("RectangleShape2D_gf2dh")
 
 [node name="Sprite2D" type="Sprite2D" parent="Point/CollisionShape2D"]
 modulate = Color(0.2231029, 0.2231029, 0.22310287, 1)
-position = Vector2(4.7683716e-07, 4.7683716e-07)
-scale = Vector2(14.000001, 14.000001)
+position = Vector2(-5.9604645e-07, -5.9604645e-07)
+scale = Vector2(20, 20)
 texture = SubResource("CanvasTexture_k36pn")
 
 [node name="Area2D" type="Area2D" parent="."]
