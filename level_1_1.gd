@@ -20,11 +20,10 @@ func _ready() -> void:
 	
 		
 func _physics_process(delta: float) -> void:
-	print(door_bool)
 	camera.position.x = hero.position.x
-	#health_bar.position.x = camera.position.x
 	if !alive():
-		get_tree().quit()
+		get_tree().change_scene_to_file("res://Menus/game_over.tscn")
+	
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
@@ -32,11 +31,11 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		await simple_transition_manager.fade_out()
 		hero.position.x = start_x
 		hero.position.y = start_y
-		hero.health -= 10
+		hero.lives -= 1
 		simple_transition_manager.fade_in()
 		
 func alive() -> bool:
-	if hero.health == 0:
+	if hero.lives == 0:
 		return false
 	else:
 		return true
@@ -52,5 +51,5 @@ func _on_door_open_body_entered(body: Node2D) -> void:
 
 func change_lvl() -> void:
 	await simple_transition_manager.fade_out()
-	get_tree().change_scene_to_file("res://level_1_2.tscn")
+	get_tree().change_scene_to_file("res://Levels/level_1_2.tscn")
 	simple_transition_manager.fade_in()

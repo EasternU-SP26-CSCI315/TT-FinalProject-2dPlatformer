@@ -1,15 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://ces5ydnjm5t6d"]
+[gd_scene load_steps=2 format=3 uid="uid://dse5vegi5mpoy"]
 
-[ext_resource type="Script" uid="uid://ch547u53a0jgo" path="res://main_menu.gd" id="1_7mewq"]
+[ext_resource type="Script" uid="uid://dfh57ew0bhxk4" path="res://game_over.gd" id="1_y26ei"]
 
-[node name="Control" type="Control"]
+[node name="game over" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_7mewq")
+script = ExtResource("1_y26ei")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -23,15 +23,15 @@ grow_vertical = 2
 custom_minimum_size = Vector2(250, 100)
 layout_mode = 2
 
-[node name="start_game" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="replay" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "Start Game"
+text = "Retry?"
 
-[node name="Exit" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="quit" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "Exit"
+text = "Quit"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -47,9 +47,9 @@ theme_override_constants/margin_top = 100
 [node name="Label" type="Label" parent="MarginContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "Grapple Adventure!"
+text = "Game Over!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/start_game" to="." method="_on_start_game_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/replay" to="." method="_on_replay_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/quit" to="." method="_on_quit_pressed"]

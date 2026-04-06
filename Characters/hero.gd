@@ -6,11 +6,11 @@ extends CharacterBody2D
 @export_range(0.0, 1.0) var friction = 0.1
 @export_range(0.0 , 1.0) var acceleration = 0.25
 @onready var grappler: Node2D = $Grappler
-var START_HEALTH = 100
-var health
+var START_LIVES = 5
+var lives
 
 func _ready() -> void:
-	health = START_HEALTH
+	lives = START_LIVES
 
 	
 func _physics_process(delta):
@@ -31,3 +31,8 @@ func _physics_process(delta):
 	move_and_slide()
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_speed
+	if Input.is_action_just_pressed("menu"):
+		await simple_transition_manager.fade_out()
+		get_tree().change_scene_to_file("res://Menus/main menu.tscn")
+		simple_transition_manager.fade_in()
+		

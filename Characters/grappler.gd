@@ -21,8 +21,6 @@ func _process(delta):
 	if current_anchor != null:
 		ray.look_at(current_anchor.global_position)
 		ray.target_position = ray.to_local(current_anchor.global_position)
-	else:
-		can_grapple = false
 	
 	if Input.is_action_just_pressed("grapple") and can_grapple:
 		if grapple_toggle == true:
@@ -31,8 +29,9 @@ func _process(delta):
 		else:
 			retract()
 			grapple_toggle = true
-	#if !can_grapple:
-		#retract()
+	if !can_grapple:
+		retract()
+		grapple_toggle = true
 	if launched:
 		handle_grapple(delta)
 

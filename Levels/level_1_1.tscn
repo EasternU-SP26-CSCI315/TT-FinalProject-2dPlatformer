@@ -1,6 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://d3gnhlwfhlfd6"]
+[gd_scene load_steps=11 format=3 uid="uid://dpg0eqrtlu3k4"]
 
-[ext_resource type="Script" uid="uid://bte2748agva6h" path="res://level_1_1.gd" id="1_g7upi"]
+[ext_resource type="Script" uid="uid://yflsn0aeu2ir" path="res://level_1_1.gd" id="1_g7upi"]
 [ext_resource type="PackedScene" uid="uid://fo3tgqbcxms" path="res://enviroment/ground_platform.tscn" id="2_j5yh6"]
 [ext_resource type="PackedScene" uid="uid://buvpopi8rr8lj" path="res://enviroment/floating_platform.tscn" id="3_yie16"]
 [ext_resource type="PackedScene" uid="uid://ba74sol07ih5o" path="res://enviroment/obstacle.tscn" id="4_kdhf2"]
