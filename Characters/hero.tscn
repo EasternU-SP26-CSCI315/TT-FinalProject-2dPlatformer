@@ -1,23 +1,113 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7cqo4cem4cb"]
+[gd_scene load_steps=20 format=3 uid="uid://c7cqo4cem4cb"]
 
 [ext_resource type="Script" uid="uid://upi2iq1tbdoi" path="res://Characters/hero.gd" id="1_780bu"]
 [ext_resource type="Script" uid="uid://chv3qoq76avxm" path="res://Characters/grappler.gd" id="2_xxkby"]
+[ext_resource type="AudioStream" uid="uid://1giq50opw63m" path="res://Audio/impactMetal_light_000.ogg" id="3_g4g64"]
+[ext_resource type="Texture2D" uid="uid://b17ni1offcruj" path="res://Assets/player_fall.png" id="3_ixpo6"]
+[ext_resource type="AudioStream" uid="uid://c4dg22040c7sq" path="res://Audio/impactMetal_light_001.ogg" id="4_5r1lb"]
+[ext_resource type="Texture2D" uid="uid://dltji0e2l0sem" path="res://Assets/player_idle.png" id="4_lkipc"]
+[ext_resource type="AudioStream" uid="uid://ny88v2m7mlcf" path="res://Audio/impactMetal_light_002.ogg" id="5_du147"]
+[ext_resource type="Texture2D" uid="uid://bwgqjlgy4bwpt" path="res://Assets/player_stand.png" id="5_rwxno"]
+[ext_resource type="Texture2D" uid="uid://dwep534i0du0v" path="res://Assets/player_jump.png" id="6_4w6nx"]
+[ext_resource type="AudioStream" uid="uid://dga4qyilndd5n" path="res://Audio/impactMetal_light_003.ogg" id="6_hm3yo"]
+[ext_resource type="Texture2D" uid="uid://deanpf0w3sh57" path="res://Assets/player_hang.png" id="7_dkx3p"]
+[ext_resource type="AudioStream" uid="uid://wc7woym7kwvj" path="res://Audio/impactMetal_light_004.ogg" id="7_rn4a8"]
+[ext_resource type="Texture2D" uid="uid://cptffq5u71is6" path="res://Assets/player_walk1.png" id="8_g4g64"]
+[ext_resource type="Texture2D" uid="uid://qtyx8i8a3i8m" path="res://Assets/player_walk2.png" id="9_5r1lb"]
+[ext_resource type="AudioStream" uid="uid://ccaemlv7vp8wy" path="res://Audio/lumora_studios-pixel-jump-319167.mp3" id="15_5r1lb"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ijayv"]
+random_pitch = 1.5
+streams_count = 5
+stream_0/stream = ExtResource("3_g4g64")
+stream_1/stream = ExtResource("4_5r1lb")
+stream_2/stream = ExtResource("5_du147")
+stream_3/stream = ExtResource("6_hm3yo")
+stream_4/stream = ExtResource("7_rn4a8")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t4edt"]
+size = Vector2(20, 77)
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_780bu"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_du147"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ixpo6")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_lkipc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_rwxno")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lkipc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_rwxno")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lkipc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_rwxno")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_4w6nx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4w6nx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4w6nx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4w6nx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4w6nx")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_dkx3p")
+}],
+"loop": true,
+"name": &"swing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_g4g64")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5r1lb")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_du147"]
+random_pitch = 1.5
+streams_count = 1
+stream_0/stream = ExtResource("15_5r1lb")
 
 [node name="Hero" type="CharacterBody2D"]
-scale = Vector2(1, 3)
 script = ExtResource("1_780bu")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_t4edt")
-
-[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
-modulate = Color(0.20008776, 0.3196963, 1, 1)
-scale = Vector2(20, 20)
-texture = SubResource("CanvasTexture_780bu")
 
 [node name="Grappler" type="Node2D" parent="."]
 script = ExtResource("2_xxkby")
@@ -25,5 +115,20 @@ script = ExtResource("2_xxkby")
 [node name="ray" type="RayCast2D" parent="Grappler"]
 
 [node name="rope" type="Line2D" parent="Grappler"]
-points = PackedVector2Array(0, 0, 155, -70.333336)
+points = PackedVector2Array(31, -30, 155, -70.333336)
 default_color = Color(0.4857039, 0.4857034, 0.4857036, 1)
+
+[node name="impact" type="AudioStreamPlayer2D" parent="Grappler"]
+stream = SubResource("AudioStreamRandomizer_ijayv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7.5)
+shape = SubResource("RectangleShape2D_t4edt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D"]
+scale = Vector2(1, 1.0000002)
+sprite_frames = SubResource("SpriteFrames_du147")
+animation = &"swing"
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_du147")

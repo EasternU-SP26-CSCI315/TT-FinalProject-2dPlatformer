@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="Platforming Project"
-run/main_scene="uid://k8weldq3io6r"
+run/main_scene="uid://c4y3keokd70ci"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 simple_transition_manager="*res://simple_transition_manager.gd"
+player_lives="*res://player_lives.gd"
 
 [input]
 
@@ -61,3 +62,7 @@ menu={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0.18399999, 0.6746666, 0.92, 1)

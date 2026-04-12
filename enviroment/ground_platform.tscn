@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://fo3tgqbcxms"]
+[gd_scene load_steps=4 format=3 uid="uid://fo3tgqbcxms"]
+
+[ext_resource type="Texture2D" uid="uid://1m8ippdc85h1" path="res://Assets/platformPack_tile_ground.png" id="1_metj2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jkai6"]
 
@@ -11,6 +13,10 @@ scale = Vector2(25, 3)
 shape = SubResource("RectangleShape2D_jkai6")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
-modulate = Color(0.7491316, 0.30949745, 0.27732623, 1)
 scale = Vector2(20, 20)
 texture = SubResource("CanvasTexture_q1utm")
+
+[node name="Sprite2D2" type="Sprite2D" parent="CollisionShape2D/Sprite2D"]
+position = Vector2(0.0009999871, 0.0083332965)
+scale = Vector2(0.015656251, 0.015885418)
+texture = ExtResource("1_metj2")

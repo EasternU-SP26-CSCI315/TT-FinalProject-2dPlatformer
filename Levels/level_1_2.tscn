@@ -1,12 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://dfaccqq4lnguy"]
+[gd_scene load_steps=14 format=3 uid="uid://ka1r2kwjua0g"]
 
 [ext_resource type="PackedScene" uid="uid://fo3tgqbcxms" path="res://enviroment/ground_platform.tscn" id="1_03in3"]
-[ext_resource type="Script" uid="uid://bodkn303yk6c" path="res://level_1_2.gd" id="1_cp15y"]
+[ext_resource type="Script" uid="uid://525v61v7crc0" path="res://Levels/level_1_2.gd" id="1_cp15y"]
 [ext_resource type="PackedScene" uid="uid://c7cqo4cem4cb" path="res://Characters/hero.tscn" id="2_g5i7g"]
 [ext_resource type="PackedScene" uid="uid://dyfw1fcya6msp" path="res://enviroment/anchor_point.tscn" id="3_eo7hr"]
 [ext_resource type="PackedScene" uid="uid://buvpopi8rr8lj" path="res://enviroment/floating_platform.tscn" id="4_hfapc"]
 [ext_resource type="PackedScene" uid="uid://ba74sol07ih5o" path="res://enviroment/obstacle.tscn" id="5_ec5gg"]
+[ext_resource type="AudioStream" uid="uid://dqnm3davb0fmo" path="res://Audio/player death.mp3" id="6_18fq3"]
 [ext_resource type="PackedScene" uid="uid://chd7r6bcxjoqi" path="res://enviroment/door_open.tscn" id="6_ec5gg"]
+[ext_resource type="AudioStream" uid="uid://dr2uacmei04fp" path="res://Audio/level change.wav" id="7_gmrqo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hfapc"]
 size = Vector2(1461, 1196)
@@ -34,14 +36,15 @@ process_callback = 0
 position = Vector2(-325, 295)
 
 [node name="Ground platform2" parent="static bodies" instance=ExtResource("1_03in3")]
-position = Vector2(1453, 295)
+position = Vector2(1343.0001, 297)
+scale = Vector2(40, 3)
 
 [node name="Anchor point" parent="static bodies" instance=ExtResource("3_eo7hr")]
-position = Vector2(179, -324)
+position = Vector2(92, -324)
 scale = Vector2(2, 2)
 
 [node name="Anchor point3" parent="static bodies" instance=ExtResource("3_eo7hr")]
-position = Vector2(889, -324)
+position = Vector2(811, -325)
 scale = Vector2(2, 2)
 
 [node name="floating platform" parent="static bodies" instance=ExtResource("4_hfapc")]
@@ -60,12 +63,12 @@ shape = SubResource("RectangleShape2D_hfapc")
 position = Vector2(2465, -24)
 
 [node name="Anchor point4" parent="static bodies" instance=ExtResource("3_eo7hr")]
-position = Vector2(2704, -866)
+position = Vector2(2710, -588)
 scale = Vector2(2, 2)
 
 [node name="obstacle" parent="static bodies" instance=ExtResource("5_ec5gg")]
-position = Vector2(2517, -143)
-scale = Vector2(5, 10)
+position = Vector2(2537, -114.00001)
+scale = Vector2(3, 7)
 
 [node name="floating platform4" parent="static bodies" instance=ExtResource("4_hfapc")]
 position = Vector2(3103, -26)
@@ -79,11 +82,12 @@ position = Vector2(4351, 885.00006)
 scale = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_cp15y")
 
+[node name="player_death" type="AudioStreamPlayer" parent="static bodies/Death Plane"]
+stream = ExtResource("6_18fq3")
+bus = &"death"
+
 [node name="Ground platform3" parent="static bodies" instance=ExtResource("1_03in3")]
 position = Vector2(3681, 295)
-
-[node name="Door_open" parent="static bodies" instance=ExtResource("6_ec5gg")]
-position = Vector2(3823.9998, 164.00002)
 
 [node name="Bounds" type="Node2D" parent="static bodies"]
 position = Vector2(2085, -260)
@@ -104,10 +108,19 @@ scale = Vector2(1, 1.5)
 position = Vector2(301.5, 12)
 shape = SubResource("WorldBoundaryShape2D_v12h1")
 
+[node name="Door_open" parent="static bodies" instance=ExtResource("6_ec5gg")]
+position = Vector2(3790, 170)
+scale = Vector2(2, 3)
+
+[node name="level change" type="AudioStreamPlayer2D" parent="static bodies/Door_open"]
+stream = ExtResource("7_gmrqo")
+
 [node name="Hero" parent="." instance=ExtResource("2_g5i7g")]
 position = Vector2(-548, 234)
 
 [connection signal="body_entered" from="static bodies/Camera_y_area" to="." method="_on_camera_y_area_body_entered"]
 [connection signal="body_exited" from="static bodies/Camera_y_area" to="." method="_on_camera_y_area_body_exited"]
 [connection signal="body_entered" from="static bodies/Death Plane/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="finished" from="static bodies/Death Plane/player_death" to="." method="_on_player_death_finished"]
 [connection signal="body_entered" from="static bodies/Door_open" to="." method="_on_door_open_body_entered"]
+[connection signal="finished" from="static bodies/Door_open/level change" to="." method="_on_level_change_finished"]

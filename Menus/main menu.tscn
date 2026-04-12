@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://k8weldq3io6r"]
+[gd_scene load_steps=2 format=3 uid="uid://c4y3keokd70ci"]
 
-[ext_resource type="Script" uid="uid://dmasim20ajq1m" path="res://main_menu.gd" id="1_7mewq"]
+[ext_resource type="Script" uid="uid://7scv2ycn3dxw" path="res://Menus/main_menu.gd" id="1_0pfrh"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -9,7 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_7mewq")
+script = ExtResource("1_0pfrh")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -27,6 +27,11 @@ layout_mode = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Start Game"
+
+[node name="how to play" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "How to play"
 
 [node name="Exit" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -52,4 +57,5 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/start_game" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/how to play" to="." method="_on_how_to_play_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

@@ -1,0 +1,103 @@
+[gd_scene load_steps=8 format=3 uid="uid://c0kh0mj7eqwmf"]
+
+[ext_resource type="PackedScene" uid="uid://fo3tgqbcxms" path="res://enviroment/ground_platform.tscn" id="1_0xeif"]
+[ext_resource type="Script" uid="uid://dnuln5rfk850w" path="res://Levels/tutorial.gd" id="1_hga2d"]
+[ext_resource type="PackedScene" uid="uid://buvpopi8rr8lj" path="res://enviroment/floating_platform.tscn" id="2_gdvy0"]
+[ext_resource type="PackedScene" uid="uid://dyfw1fcya6msp" path="res://enviroment/anchor_point.tscn" id="3_hga2d"]
+[ext_resource type="PackedScene" uid="uid://c7cqo4cem4cb" path="res://Characters/hero.tscn" id="4_gdvy0"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mscth"]
+normal = Vector2(1, 0)
+distance = -1.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_e312d"]
+normal = Vector2(-1, 0)
+
+[node name="Tutorial" type="Node"]
+script = ExtResource("1_hga2d")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -585.0
+offset_top = -323.0
+offset_right = -579.0
+offset_bottom = -325.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 200
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "A/D to move"
+
+[node name="Label2" type="Label" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "Space to Jump"
+
+[node name="Label3" type="Label" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "G to Grapple"
+
+[node name="Label4" type="Label" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Esc to return to main menu"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="static bodies" type="Node2D" parent="."]
+
+[node name="Ground platform" parent="static bodies" instance=ExtResource("1_0xeif")]
+position = Vector2(0, 300)
+scale = Vector2(75, 3)
+
+[node name="Bounds" type="Node2D" parent="static bodies"]
+position = Vector2(2085, -260)
+scale = Vector2(2, 2)
+
+[node name="Lbound" type="StaticBody2D" parent="static bodies/Bounds"]
+position = Vector2(-1330.5, 130)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="static bodies/Bounds/Lbound"]
+scale = Vector2(2, 2)
+shape = SubResource("WorldBoundaryShape2D_mscth")
+
+[node name="Rbound" type="StaticBody2D" parent="static bodies/Bounds"]
+position = Vector2(622, 130)
+scale = Vector2(1, 1.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="static bodies/Bounds/Rbound"]
+position = Vector2(-1377, 0)
+shape = SubResource("WorldBoundaryShape2D_e312d")
+
+[node name="floating platform2" parent="static bodies" instance=ExtResource("2_gdvy0")]
+position = Vector2(273, 154)
+
+[node name="Anchor point" parent="static bodies" instance=ExtResource("3_hga2d")]
+position = Vector2(-339, -323)
+scale = Vector2(2, 2)
+
+[node name="Hero" parent="." instance=ExtResource("4_gdvy0")]
+position = Vector2(0, 240)

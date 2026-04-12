@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://chd4awpfssels"]
+[gd_scene load_steps=2 format=3 uid="uid://cgvnoq6j5revt"]
 
-[ext_resource type="Script" uid="uid://b4hm4fkx2yi1t" path="res://end_screen.gd" id="1_my301"]
+[ext_resource type="Script" uid="uid://tax0dytbsvma" path="res://Menus/end_screen.gd" id="1_723lj"]
 
 [node name="End screen" type="Control"]
 layout_mode = 3
@@ -9,7 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_my301")
+script = ExtResource("1_723lj")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1

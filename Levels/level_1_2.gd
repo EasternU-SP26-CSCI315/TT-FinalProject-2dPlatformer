@@ -5,6 +5,8 @@ extends Node
 @onready var camera: Camera2D = $Camera
 @onready var grappler: Node2D = $Hero/Grappler
 @onready var door_open: Area2D = $"Static bodies/Door_open"
+@onready var level_change: AudioStreamPlayer2D = $"static bodies/Door_open/level change"
+@onready var player_death: AudioStreamPlayer = $"static bodies/Death Plane/player_death"
 var start_x = -548.0
 var start_y = 234.0
 @onready var door_bool = false
@@ -20,23 +22,21 @@ func _ready() -> void:
 	
 		
 func _physics_process(delta: float) -> void:
+	
 	if camera_y:
-		camera_position(hero.position.x, hero.position.y)
+		camera_position(hero.position.x, hero.position.y-100)
 	else:
 		camera_position(hero.position.x, 0)
 	if !alive():
-		get_tree().change_scene_to_file("res://game_over.tscn")
+		get_tree().change_scene_to_file("res://Menus/game_over.tscn")
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D:
-		await simple_transition_manager.fade_out()
-		get_tree().change_scene_to_file("res://level_1_1.tscn")
-		hero.lives -= 1
-		simple_transition_manager.fade_in()
+		player_death.playing = true
 		
 func alive() -> bool:
-	if hero.lives == 0:
+	if player_lives.lives == 0:
 		return false
 	else:
 		return true
@@ -56,12 +56,26 @@ func camera_position(x: float, y: float) -> void:
 func _on_door_open_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D:
 		door_bool = true
-	if  door_bool:
-		change_lvl()
+		hero.speed = 0
+		play()
+		await simple_transition_manager.fade_out()
 		
-
+func play() -> void:
+	level_change.playing = true
 
 func change_lvl() -> void:
-	await simple_transition_manager.fade_out()
-	get_tree().change_scene_to_file("res://level_1_3.tscn")
+	get_tree().change_scene_to_file("res://Levels/level_1_3.tscn")
 	simple_transition_manager.fade_in()
+
+
+func _on_level_change_finished() -> void:
+	change_lvl()
+
+func player_die() -> void:
+	await simple_transition_manager.fade_out()
+	get_tree().change_scene_to_file("res://Levels/level_1_1.tscn")
+	player_lives.lives -= 1
+	simple_transition_manager.fade_in()
+	
+func _on_player_death_finished() -> void:
+	player_die()

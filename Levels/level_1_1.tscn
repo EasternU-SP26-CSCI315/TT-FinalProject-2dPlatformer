@@ -1,12 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://dpg0eqrtlu3k4"]
+[gd_scene load_steps=13 format=3 uid="uid://dwovpvvoyrybj"]
 
-[ext_resource type="Script" uid="uid://yflsn0aeu2ir" path="res://level_1_1.gd" id="1_g7upi"]
-[ext_resource type="PackedScene" uid="uid://fo3tgqbcxms" path="res://enviroment/ground_platform.tscn" id="2_j5yh6"]
-[ext_resource type="PackedScene" uid="uid://buvpopi8rr8lj" path="res://enviroment/floating_platform.tscn" id="3_yie16"]
-[ext_resource type="PackedScene" uid="uid://ba74sol07ih5o" path="res://enviroment/obstacle.tscn" id="4_kdhf2"]
-[ext_resource type="PackedScene" uid="uid://dyfw1fcya6msp" path="res://enviroment/anchor_point.tscn" id="5_vdagt"]
-[ext_resource type="PackedScene" uid="uid://chd7r6bcxjoqi" path="res://enviroment/door_open.tscn" id="6_gfula"]
-[ext_resource type="PackedScene" uid="uid://c7cqo4cem4cb" path="res://Characters/hero.tscn" id="7_nqhdv"]
+[ext_resource type="Script" uid="uid://clj86iq55tsfb" path="res://Levels/level_1_1.gd" id="1_5fpjl"]
+[ext_resource type="PackedScene" uid="uid://fo3tgqbcxms" path="res://enviroment/ground_platform.tscn" id="2_b4nxx"]
+[ext_resource type="PackedScene" uid="uid://buvpopi8rr8lj" path="res://enviroment/floating_platform.tscn" id="3_oh87a"]
+[ext_resource type="PackedScene" uid="uid://ba74sol07ih5o" path="res://enviroment/obstacle.tscn" id="4_lys1b"]
+[ext_resource type="PackedScene" uid="uid://chd7r6bcxjoqi" path="res://enviroment/door_open.tscn" id="5_khbg3"]
+[ext_resource type="AudioStream" uid="uid://dr2uacmei04fp" path="res://Audio/level change.wav" id="6_b4nxx"]
+[ext_resource type="PackedScene" uid="uid://dyfw1fcya6msp" path="res://enviroment/anchor_point.tscn" id="6_lo54m"]
+[ext_resource type="PackedScene" uid="uid://c7cqo4cem4cb" path="res://Characters/hero.tscn" id="7_er8hr"]
+[ext_resource type="AudioStream" uid="uid://dqnm3davb0fmo" path="res://Audio/player death.mp3" id="8_oh87a"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4mnpp"]
 normal = Vector2(1, 0)
@@ -19,7 +21,7 @@ normal = Vector2(-1, 0)
 size = Vector2(780.7999, 20)
 
 [node name="level 1-1" type="Node"]
-script = ExtResource("1_g7upi")
+script = ExtResource("1_5fpjl")
 
 [node name="Camera" type="Camera2D" parent="."]
 scale = Vector2(10, 0.5)
@@ -27,62 +29,62 @@ process_callback = 0
 
 [node name="Static bodies" type="Node2D" parent="."]
 
-[node name="Ground platform" parent="Static bodies" instance=ExtResource("2_j5yh6")]
-position = Vector2(-78, 295)
-scale = Vector2(50, 3)
-
-[node name="Ground platform2" parent="Static bodies" instance=ExtResource("2_j5yh6")]
-position = Vector2(1372, 295)
-scale = Vector2(50, 3)
-
-[node name="Ground platform3" parent="Static bodies" instance=ExtResource("2_j5yh6")]
-position = Vector2(2826, 295)
-scale = Vector2(50, 3)
-
-[node name="floating platform" parent="Static bodies" instance=ExtResource("3_yie16")]
-position = Vector2(-30, 102)
-
-[node name="floating platform2" parent="Static bodies" instance=ExtResource("3_yie16")]
-position = Vector2(-285, 161)
-
-[node name="floating platform3" parent="Static bodies" instance=ExtResource("3_yie16")]
-position = Vector2(1468, 160)
-
-[node name="obstacle" parent="Static bodies" instance=ExtResource("4_kdhf2")]
-position = Vector2(173, 185)
-scale = Vector2(4, 8)
-
-[node name="obstacle2" parent="Static bodies" instance=ExtResource("4_kdhf2")]
-position = Vector2(245, 235)
-
-[node name="obstacle3" parent="Static bodies" instance=ExtResource("4_kdhf2")]
-position = Vector2(1801, 185)
-scale = Vector2(4, 8)
-
-[node name="obstacle4" parent="Static bodies" instance=ExtResource("4_kdhf2")]
-position = Vector2(1852, 235)
-scale = Vector2(2, 3)
-
-[node name="obstacle5" parent="Static bodies" instance=ExtResource("4_kdhf2")]
-position = Vector2(2607, 235)
-scale = Vector2(2, 3)
-
-[node name="obstacle6" parent="Static bodies" instance=ExtResource("4_kdhf2")]
-position = Vector2(2677, 195)
-scale = Vector2(5, 7)
-
-[node name="Door_open" parent="Static bodies" instance=ExtResource("6_gfula")]
-position = Vector2(3136, 165)
-
 [node name="anchor_points" type="Node2D" parent="Static bodies"]
 
-[node name="Anchor point" parent="Static bodies/anchor_points" instance=ExtResource("5_vdagt")]
+[node name="Anchor point" parent="Static bodies/anchor_points" instance=ExtResource("6_lo54m")]
 position = Vector2(620, -260)
 scale = Vector2(2, 2)
 
-[node name="Anchor point2" parent="Static bodies/anchor_points" instance=ExtResource("5_vdagt")]
+[node name="Anchor point2" parent="Static bodies/anchor_points" instance=ExtResource("6_lo54m")]
 position = Vector2(2085, -260)
 scale = Vector2(2, 2)
+
+[node name="Ground platform" parent="Static bodies" instance=ExtResource("2_b4nxx")]
+position = Vector2(-77, 295)
+scale = Vector2(50, 3)
+
+[node name="Ground platform2" parent="Static bodies" instance=ExtResource("2_b4nxx")]
+position = Vector2(1372, 295)
+scale = Vector2(50, 3)
+
+[node name="Ground platform3" parent="Static bodies" instance=ExtResource("2_b4nxx")]
+position = Vector2(2826, 295)
+scale = Vector2(50, 3)
+
+[node name="floating platform" parent="Static bodies" instance=ExtResource("3_oh87a")]
+position = Vector2(-30, 102)
+
+[node name="floating platform2" parent="Static bodies" instance=ExtResource("3_oh87a")]
+position = Vector2(-285, 161)
+
+[node name="floating platform3" parent="Static bodies" instance=ExtResource("3_oh87a")]
+position = Vector2(1560, 156)
+
+[node name="obstacle" parent="Static bodies" instance=ExtResource("4_lys1b")]
+position = Vector2(169, 170)
+scale = Vector2(5, 10)
+
+[node name="obstacle2" parent="Static bodies" instance=ExtResource("4_lys1b")]
+position = Vector2(246, 219.99998)
+scale = Vector2(3, 5)
+
+[node name="obstacle3" parent="Static bodies" instance=ExtResource("4_lys1b")]
+position = Vector2(1827.0001, 165.00002)
+scale = Vector2(5, 10)
+
+[node name="obstacle5" parent="Static bodies" instance=ExtResource("4_lys1b")]
+position = Vector2(2607, 235)
+
+[node name="obstacle6" parent="Static bodies" instance=ExtResource("4_lys1b")]
+position = Vector2(2667, 196)
+scale = Vector2(3, 7)
+
+[node name="Door_open" parent="Static bodies" instance=ExtResource("5_khbg3")]
+position = Vector2(3122, 169)
+scale = Vector2(2, 3)
+
+[node name="level change" type="AudioStreamPlayer2D" parent="Static bodies/Door_open"]
+stream = ExtResource("6_b4nxx")
 
 [node name="Bounds" type="Node2D" parent="Static bodies"]
 position = Vector2(2085, -260)
@@ -111,8 +113,14 @@ position = Vector2(1365.0001, 652)
 scale = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_4mnpp")
 
-[node name="Hero" parent="." instance=ExtResource("7_nqhdv")]
+[node name="player_death" type="AudioStreamPlayer" parent="Static bodies/Death Plane"]
+stream = ExtResource("8_oh87a")
+bus = &"death"
+
+[node name="Hero" parent="." instance=ExtResource("7_er8hr")]
 position = Vector2(-527, 233.00002)
 
 [connection signal="body_entered" from="Static bodies/Door_open" to="." method="_on_door_open_body_entered"]
+[connection signal="finished" from="Static bodies/Door_open/level change" to="." method="_on_level_change_finished"]
 [connection signal="body_entered" from="Static bodies/Death Plane/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="finished" from="Static bodies/Death Plane/player_death" to="." method="_on_player_death_finished"]

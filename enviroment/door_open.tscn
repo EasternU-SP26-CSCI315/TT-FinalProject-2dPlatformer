@@ -1,8 +1,8 @@
 [gd_scene load_steps=3 format=3 uid="uid://chd7r6bcxjoqi"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h12g1"]
+[ext_resource type="Texture2D" uid="uid://bd28ajfn6bo7p" path="res://Assets/platformPack_tile_door.png" id="1_u8kbh"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_u8kbh"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h12g1"]
 
 [node name="Door_open" type="Area2D"]
 scale = Vector2(5, 10)
@@ -11,6 +11,4 @@ scale = Vector2(5, 10)
 shape = SubResource("RectangleShape2D_h12g1")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
-modulate = Color(0, 0, 0, 1)
-scale = Vector2(20, 20)
-texture = SubResource("CanvasTexture_u8kbh")
+texture = ExtResource("1_u8kbh")

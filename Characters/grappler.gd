@@ -2,6 +2,8 @@ extends Node2D
 @export var rest_length = 250.0
 @export var stiffness = 15.0
 @export var damping = 1.0
+@onready var impact: AudioStreamPlayer2D = $impact
+
 
 @onready var hero: CharacterBody2D = $".."
 @onready var ray: RayCast2D = $ray
@@ -36,6 +38,7 @@ func _process(delta):
 		handle_grapple(delta)
 
 func launch():
+	impact.playing = true
 	if ray.is_colliding():
 		launched = true
 		target = ray.get_collision_point()
