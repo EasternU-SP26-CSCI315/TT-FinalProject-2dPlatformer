@@ -1,10 +1,9 @@
 extends Node
 
-@onready var anchor_point: Node2D = $"Static bodies/Anchor point"
 @onready var hero: CharacterBody2D = $Hero
 @onready var camera: Camera2D = $Camera
 @onready var grappler: Node2D = $Hero/Grappler
-@onready var door_open: Area2D = $"Static bodies/Door_open"
+@onready var flag_pole: Area2D = $"static bodies/flag pole"
 @onready var level_change: AudioStreamPlayer2D = $"static bodies/flag pole/level change"
 @onready var player_death: AudioStreamPlayer = $"static bodies/Death Plane/player_death"
 var start_x = -527.0
@@ -19,7 +18,7 @@ func _ready() -> void:
 	camera.position.y = 0
 	
 		
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	
 	if camera_y:
 		camera_position(hero.position.x, hero.position.y-100)

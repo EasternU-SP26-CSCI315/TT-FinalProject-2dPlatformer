@@ -1,6 +1,4 @@
 extends Node
-
-@onready var anchor_point: Node2D = $"Static bodies/Anchor point"
 @onready var hero: CharacterBody2D = $Hero
 @onready var camera: Camera2D = $Camera
 @onready var grappler: Node2D = $Hero/Grappler
@@ -21,7 +19,7 @@ func _ready() -> void:
 	#health_bar.position.y = 0
 	
 		
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	camera.position.x = hero.position.x
 	if !alive():
 		get_tree().change_scene_to_file("res://Menus/game_over.tscn")
