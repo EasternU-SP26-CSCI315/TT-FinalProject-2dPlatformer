@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dwovpvvoyrybj"]
+[gd_scene load_steps=14 format=3 uid="uid://dwovpvvoyrybj"]
 
 [ext_resource type="Script" uid="uid://clj86iq55tsfb" path="res://Levels/level_1_1.gd" id="1_5fpjl"]
 [ext_resource type="PackedScene" uid="uid://fo3tgqbcxms" path="res://enviroment/ground_platform.tscn" id="2_b4nxx"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dyfw1fcya6msp" path="res://enviroment/anchor_point.tscn" id="6_lo54m"]
 [ext_resource type="PackedScene" uid="uid://c7cqo4cem4cb" path="res://Characters/hero.tscn" id="7_er8hr"]
 [ext_resource type="AudioStream" uid="uid://dqnm3davb0fmo" path="res://Audio/player death.mp3" id="8_oh87a"]
+[ext_resource type="PackedScene" uid="uid://d1w05oxvagvdn" path="res://UI/life_counter.tscn" id="10_lys1b"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4mnpp"]
 normal = Vector2(1, 0)
@@ -22,10 +23,6 @@ size = Vector2(780.7999, 20)
 
 [node name="level 1-1" type="Node"]
 script = ExtResource("1_5fpjl")
-
-[node name="Camera" type="Camera2D" parent="."]
-scale = Vector2(10, 0.5)
-process_callback = 0
 
 [node name="Static bodies" type="Node2D" parent="."]
 
@@ -119,6 +116,14 @@ bus = &"death"
 
 [node name="Hero" parent="." instance=ExtResource("7_er8hr")]
 position = Vector2(-527, 233.00002)
+
+[node name="Camera" type="Camera2D" parent="."]
+scale = Vector2(10, 0.5)
+process_callback = 0
+
+[node name="Life counter" parent="Camera" instance=ExtResource("10_lys1b")]
+position = Vector2(-48.8, 588)
+scale = Vector2(0.1, 2)
 
 [connection signal="body_entered" from="Static bodies/Door_open" to="." method="_on_door_open_body_entered"]
 [connection signal="finished" from="Static bodies/Door_open/level change" to="." method="_on_level_change_finished"]

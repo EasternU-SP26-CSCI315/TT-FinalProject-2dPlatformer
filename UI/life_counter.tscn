@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1w05oxvagvdn"]
+
+[ext_resource type="Script" uid="uid://1205rnvditg7" path="res://UI/life_counter.gd" id="1_454hi"]
+[ext_resource type="Texture2D" uid="uid://vlxdqsjki7am" path="res://Assets/Life Counter/lives.png" id="1_re5dk"]
+[ext_resource type="Texture2D" uid="uid://bkbdlusgh2rcw" path="res://Assets/Life Counter/5.png" id="2_454hi"]
+
+[node name="Life counter" type="Node2D"]
+script = ExtResource("1_454hi")
+
+[node name="Lives" type="Sprite2D" parent="."]
+position = Vector2(-25, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_re5dk")
+
+[node name="Count" type="Sprite2D" parent="."]
+position = Vector2(70, -11)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_454hi")

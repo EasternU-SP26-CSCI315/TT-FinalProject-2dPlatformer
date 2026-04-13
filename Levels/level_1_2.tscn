@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ka1r2kwjua0g"]
+[gd_scene load_steps=15 format=3 uid="uid://ka1r2kwjua0g"]
 
 [ext_resource type="PackedScene" uid="uid://fo3tgqbcxms" path="res://enviroment/ground_platform.tscn" id="1_03in3"]
 [ext_resource type="Script" uid="uid://525v61v7crc0" path="res://Levels/level_1_2.gd" id="1_cp15y"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://dqnm3davb0fmo" path="res://Audio/player death.mp3" id="6_18fq3"]
 [ext_resource type="PackedScene" uid="uid://chd7r6bcxjoqi" path="res://enviroment/door_open.tscn" id="6_ec5gg"]
 [ext_resource type="AudioStream" uid="uid://dr2uacmei04fp" path="res://Audio/level change.wav" id="7_gmrqo"]
+[ext_resource type="PackedScene" uid="uid://d1w05oxvagvdn" path="res://UI/life_counter.tscn" id="10_phu7q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hfapc"]
 size = Vector2(1461, 1196)
@@ -25,10 +26,6 @@ normal = Vector2(-1, 0)
 
 [node name="level 1-2" type="Node"]
 script = ExtResource("1_cp15y")
-
-[node name="Camera" type="Camera2D" parent="."]
-scale = Vector2(250, 1.5)
-process_callback = 0
 
 [node name="static bodies" type="Node2D" parent="."]
 
@@ -117,6 +114,14 @@ stream = ExtResource("7_gmrqo")
 
 [node name="Hero" parent="." instance=ExtResource("2_g5i7g")]
 position = Vector2(-548, 234)
+
+[node name="Camera" type="Camera2D" parent="."]
+scale = Vector2(250, 1.5)
+process_callback = 0
+
+[node name="Life counter" parent="Camera" instance=ExtResource("10_phu7q")]
+position = Vector2(-1.94, 196)
+scale = Vector2(0.0039999997, 0.6666667)
 
 [connection signal="body_entered" from="static bodies/Camera_y_area" to="." method="_on_camera_y_area_body_entered"]
 [connection signal="body_exited" from="static bodies/Camera_y_area" to="." method="_on_camera_y_area_body_exited"]
